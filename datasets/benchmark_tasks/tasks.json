@@ -1,0 +1,407 @@
+[
+  {
+    "id": "task_001",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Perform EDA on the telco churn dataset: print shape, column dtypes, missing value counts per column, and overall churn rate (percentage of Churn=Yes).",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_002",
+    "category": "visualization",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Plot churn rate (Yes proportion) by Contract type as a bar chart. Save the figure to reports/figures/ using os.environ['FIGURES_DIR'].",
+    "expected_outputs": ["png"]
+  },
+  {
+    "id": "task_003",
+    "category": "classification",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Train a RandomForest classifier to predict Churn using tenure, MonthlyCharges, and TotalCharges (numeric only). Use stratified train/test split and report accuracy and weighted F1 on the test set.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_004",
+    "category": "missing_value_handling",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "TotalCharges contains missing values after numeric conversion. Impute TotalCharges with the median grouped by Contract type, encode Churn as 0/1, then train a LogisticRegression and report accuracy and F1. Print missing counts before and after imputation.",
+    "expected_outputs": ["accuracy", "stdout"]
+  },
+  {
+    "id": "task_005",
+    "category": "feature_engineering",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Engineer avg_monthly_charge (TotalCharges/tenure, handle tenure=0 and missing TotalCharges), one-hot encode Contract and InternetService, drop customerID, then train RandomForest for Churn and report macro F1 with stratified 80/20 split.",
+    "expected_outputs": ["f1"]
+  },
+  {
+    "id": "task_006",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Summarize the bank marketing dataset: number of rows, class balance for y (yes vs no), and median age by job category (top 5 jobs by count).",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_007",
+    "category": "classification",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Predict term-deposit subscription (y) using age, duration, campaign, and pdays with a RandomForest. Encode y as yes=1/no=0. Report accuracy and F1 on a stratified test split.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_008",
+    "category": "classification",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "The bank marketing target is highly imbalanced. Train LogisticRegression with class_weight='balanced' using a Pipeline with OneHotEncoder for job and marital and StandardScaler for numeric columns (age, duration, campaign). Report precision, recall, and F1 for the positive class (y=yes) on test data.",
+    "expected_outputs": ["precision", "recall", "f1"]
+  },
+  {
+    "id": "task_009",
+    "category": "visualization",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Create a stacked bar chart showing y (yes/no) counts by month. Save to reports/figures/ via FIGURES_DIR.",
+    "expected_outputs": ["png"]
+  },
+  {
+    "id": "task_010",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Explore california_housing: print describe() for numeric columns, count missing total_bedrooms, and list top 5 features correlated with median_house_value.",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_011",
+    "category": "regression",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Train a RandomForestRegressor to predict median_house_value from all numeric columns (exclude ocean_proximity). Report RMSE and R2 on a 20% test split.",
+    "expected_outputs": ["rmse", "r2"]
+  },
+  {
+    "id": "task_012",
+    "category": "missing_value_handling",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Impute missing total_bedrooms with median grouped by ocean_proximity, add rooms_per_household (total_rooms/households), then train linear regression on numeric features and report RMSE and R2.",
+    "expected_outputs": ["rmse", "r2"]
+  },
+  {
+    "id": "task_013",
+    "category": "visualization",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Scatter plot of longitude vs latitude colored by median_house_value (use alpha for overplotting). Save figure to FIGURES_DIR.",
+    "expected_outputs": ["png"]
+  },
+  {
+    "id": "task_014",
+    "category": "outlier_detection",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Detect outliers in median_income using IQR method. Clip median_income to [Q1-1.5*IQR, Q3+1.5*IQR], retrain RandomForestRegressor for median_house_value, and compare RMSE before vs after clipping.",
+    "expected_outputs": ["rmse", "stdout"]
+  },
+  {
+    "id": "task_015",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Analyze adult income data: replace '?' with NaN, print missing counts per column, and show income rate (>50K proportion) by education level.",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_016",
+    "category": "classification",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Predict income (>50K vs <=50K) using age, education_num, capital_gain, capital_loss, and hours_per_week. Do NOT use fnlwgt as a feature (it is a sampling weight). Report accuracy and F1 on test split.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_017",
+    "category": "missing_value_handling",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Handle missing values marked as '?': impute workclass and occupation with most_frequent, native_country with 'United-States' when missing, one-hot encode sex and marital_status, then train RandomForest and report accuracy and macro F1.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_018",
+    "category": "visualization",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Bar chart of >50K income rate by sex (strip trailing period from income labels). Save to FIGURES_DIR.",
+    "expected_outputs": ["png"]
+  },
+  {
+    "id": "task_019",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Report credit card default dataset shape, default rate (default_payment_next_month=1), and mean LIMIT_BAL by EDUCATION level.",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_020",
+    "category": "classification",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Train a classifier for default_payment_next_month using LIMIT_BAL, AGE, PAY_0, PAY_2, and BILL_AMT1 only (drop ID). Report accuracy, precision, and recall on stratified test split.",
+    "expected_outputs": ["accuracy", "precision", "recall"]
+  },
+  {
+    "id": "task_021",
+    "category": "feature_engineering",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Create avg_pay_delay from PAY_0 through PAY_6 (treat negative payment status codes as 0), create utilization ratio BILL_AMT1/LIMIT_BAL, then train GradientBoostingClassifier for default prediction. Report F1 and ROC-AUC.",
+    "expected_outputs": ["f1", "auc"]
+  },
+  {
+    "id": "task_022",
+    "category": "eda",
+    "difficulty": "easy",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Summarize online shoppers data: session count, Revenue conversion rate, and average PageValues for Weekend=True vs Weekend=False.",
+    "expected_outputs": ["stdout summary"]
+  },
+  {
+    "id": "task_023",
+    "category": "classification",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Predict Revenue (True/False) using BounceRates, ExitRates, PageValues, and ProductRelated_Duration with LogisticRegression after StandardScaler. Report accuracy and F1 on test split.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_024",
+    "category": "visualization",
+    "difficulty": "medium",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Plot a correlation heatmap of numeric session features (Administrative through PageValues). Save heatmap to FIGURES_DIR.",
+    "expected_outputs": ["png"]
+  },
+  {
+    "id": "task_025",
+    "category": "classification",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Edge case: Month and VisitorType are categorical strings. Build a Pipeline with OneHotEncoder for Month, VisitorType, and Weekend (as string), StandardScaler for numeric duration/rate columns, and RandomForest for Revenue. Use stratified split and report accuracy and macro F1.",
+    "expected_outputs": ["accuracy", "f1"]
+  },
+  {
+    "id": "task_026",
+    "category": "model_selection",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "You are preparing a churn prediction system for production. Compare Logistic Regression, Random Forest, and XGBoost. Select the most appropriate model considering predictive performance, interpretability, inference cost, and maintainability. Justify the final recommendation.",
+    "expected_outputs": ["model_comparison", "business_recommendation"]
+  },
+  {
+    "id": "task_027",
+    "category": "feature_importance",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Determine the five most influential factors driving customer churn. Validate the ranking using at least two different feature importance methods and explain any discrepancies.",
+    "expected_outputs": ["feature_importance_report"]
+  },
+  {
+    "id": "task_028",
+    "category": "business_strategy",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Assume the company can only target 20 percent of customers for retention campaigns. Identify the optimal customer segment and estimate the potential reduction in churn if interventions succeed for half of the targeted customers.",
+    "expected_outputs": ["segmentation_report", "impact_estimation"]
+  },
+  {
+    "id": "task_029",
+    "category": "data_leakage_detection",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Before training any model, inspect the dataset for possible sources of target leakage. Explain how each leakage source could affect evaluation results and redesign the pipeline to eliminate leakage risks.",
+    "expected_outputs": ["leakage_analysis"]
+  },
+  {
+    "id": "task_030",
+    "category": "counterfactual_reasoning",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Identify a churned customer profile and determine the minimal set of feature changes that would likely switch the prediction from churn to non-churn.",
+    "expected_outputs": ["counterfactual_analysis"]
+  },
+  {
+    "id": "task_031",
+    "category": "campaign_optimization",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Analyze whether increasing the number of marketing contacts improves subscription rates or leads to diminishing returns. Recommend an optimal contact strategy.",
+    "expected_outputs": ["optimization_report"]
+  },
+  {
+    "id": "task_032",
+    "category": "customer_segmentation",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Identify customer segments with the highest likelihood of subscribing to a term deposit and estimate the expected conversion uplift if marketing resources are focused on those segments.",
+    "expected_outputs": ["segmentation_report", "uplift_estimation"]
+  },
+  {
+    "id": "task_033",
+    "category": "explainability",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Train a predictive model and explain why a specific customer was classified as likely to subscribe. Provide both global and local explanations.",
+    "expected_outputs": ["global_explanation", "local_explanation"]
+  },
+  {
+    "id": "task_034",
+    "category": "anomaly_detection",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Identify neighborhoods whose housing prices are significantly higher than expected given income and housing characteristics. Quantify the anomaly score.",
+    "expected_outputs": ["anomaly_report"]
+  },
+  {
+    "id": "task_035",
+    "category": "feature_group_analysis",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/california_housing.csv",
+    "target_column": "median_house_value",
+    "query": "Compare the predictive power of geographic features versus socio-economic features. Determine which group contributes more to model performance.",
+    "expected_outputs": ["feature_group_comparison"]
+  },
+  {
+    "id": "task_036",
+    "category": "fairness_analysis",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Evaluate whether income predictions exhibit gender bias. Compare key fairness metrics and recommend mitigation strategies if disparities exist.",
+    "expected_outputs": ["fairness_report"]
+  },
+  {
+    "id": "task_037",
+    "category": "bias_detection",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Identify potential sources of dataset bias and assess how those biases affect downstream model predictions.",
+    "expected_outputs": ["bias_analysis"]
+  },
+  {
+    "id": "task_038",
+    "category": "risk_optimization",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Design a credit approval policy that balances minimizing defaults while maximizing approval rates. Justify the decision threshold selected.",
+    "expected_outputs": ["policy_report"]
+  },
+  {
+    "id": "task_039",
+    "category": "feature_group_comparison",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Determine whether payment history variables or demographic variables contribute more to default prediction performance.",
+    "expected_outputs": ["comparison_report"]
+  },
+  {
+    "id": "task_040",
+    "category": "conversion_strategy",
+    "difficulty": "hard",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Identify the behavioral factors most strongly associated with purchases and propose three interventions to improve conversion rates.",
+    "expected_outputs": ["behavior_analysis", "business_recommendation"]
+  },
+  {
+    "id": "task_041",
+    "category": "ablation_study",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/online_shoppers.csv",
+    "target_column": "Revenue",
+    "query": "Perform an ablation study by removing one major feature group at a time and measuring the effect on predictive performance. Determine which feature group is most critical.",
+    "expected_outputs": ["ablation_report"]
+  },
+  {
+    "id": "task_042",
+    "category": "self_critique",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/adult_income.csv",
+    "target_column": "income",
+    "query": "Build an income prediction pipeline, then critically evaluate every major decision including preprocessing, feature engineering, model selection, and evaluation. Revise any weak decisions before producing the final report.",
+    "expected_outputs": ["self_critique_report"]
+  },
+  {
+    "id": "task_043",
+    "category": "decision_revision",
+    "difficulty": "very_hard",
+    "dataset": "datasets/raw/bank_marketing.csv",
+    "target_column": "y",
+    "query": "Produce an initial predictive solution, evaluate its weaknesses, generate structured feedback, revise the solution, and compare the final results against the original version.",
+    "expected_outputs": ["revision_report", "before_after_comparison"]
+  },
+  {
+    "id": "task_044",
+    "category": "end_to_end_analytics",
+    "difficulty": "expert",
+    "dataset": "datasets/raw/credit_card_default.csv",
+    "target_column": "default_payment_next_month",
+    "query": "Act as a senior data scientist. Perform an end-to-end analytics workflow including data quality assessment, feature engineering, model development, evaluation, error analysis, business recommendations, and self-review of all major decisions.",
+    "expected_outputs": ["full_report"]
+  },
+  {
+    "id": "task_045",
+    "category": "agent_reliability",
+    "difficulty": "expert",
+    "dataset": "datasets/raw/telco_customer_churn.csv",
+    "target_column": "Churn",
+    "query": "Generate a churn prediction solution. Then intentionally search for weaknesses, hidden assumptions, possible leakage, fairness concerns, and business risks. Revise the pipeline accordingly and document all changes.",
+    "expected_outputs": ["reliability_report", "revision_log"]
+  }
+]
