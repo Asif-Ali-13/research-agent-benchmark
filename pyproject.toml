@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "research-agent"
+version = "1.0.0"
+description = "Research Agent Benchmark: Evaluating Reliable LLM-Based Data Science Agents with Structured Feedback Loops"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Asif Ali" }
+]
+
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scikit-learn>=1.5.0",
+    "scipy>=1.14.0",
+
+    "matplotlib>=3.9.0",
+    "plotly>=5.24.0",
+    "seaborn>=0.13.0",
+
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+
+    "pyyaml>=6.0.0",
+    "httpx>=0.27.0",
+
+    "google-generativeai>=0.8.0",
+    "litellm>=1.52.0",
+
+    "crewai>=1.14,<2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.0",
+]
+
+[project.scripts]
+research-agent = "research_agent.main:cli_main"
+research-api = "research_agent.api.routes:run_server"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[project.urls]
+Repository = "https://github.com/Asif-Ali-13/research-agent-benchmark"
+Issues = "https://github.com/Asif-Ali-13/research-agent-benchmark/issues"
