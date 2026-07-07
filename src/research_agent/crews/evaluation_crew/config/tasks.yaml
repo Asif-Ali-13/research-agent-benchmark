@@ -1,0 +1,21 @@
+evaluate_benchmark_task:
+  description: >
+    Review benchmark run results for mode {mode}.
+    Metrics summary: {metrics_summary}
+    Number of tasks: {task_count}
+    Identify failure patterns, recovery successes, and feedback impact.
+  expected_output: >
+    Markdown evaluation summary with metric interpretation and research insights.
+  agent: benchmark_evaluator
+
+compare_experiments_task:
+  description: >
+    Compare baseline vs feedback-loop metrics.
+    Baseline metrics: {baseline_metrics}
+    Feedback-loop metrics: {feedback_metrics}
+    Delta table: {comparison_table}
+  expected_output: >
+    Research-oriented comparison paragraph with conclusions on feedback loop effectiveness.
+  agent: metrics_analyst
+  context:
+    - evaluate_benchmark_task
