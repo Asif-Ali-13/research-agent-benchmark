@@ -1,0 +1,77 @@
+planning_task:
+  description: >
+    Analyze the user query: {query}
+    Dataset path: {dataset_path}
+    Dataset summary: {dataset_summary}
+    Create a detailed execution plan following the planner prompt guidelines.
+  expected_output: >
+    A structured execution plan with subtasks, expected outputs, and risks.
+  agent: planner_agent
+
+coding_task:
+  description: >
+    Using the plan below, write complete Python code for the analytics task.
+    Query: {query}
+    Dataset path: {dataset_path}
+    Plan: {plan}
+    Prior feedback (if any): {feedback_context}
+    Rules: use pandas/sklearn/matplotlib; save figures to reports/figures/;
+    print metrics; handle missing values; no dangerous imports.
+  expected_output: >
+    A single executable Python script with imports, analysis, and savefig calls.
+  agent: code_agent
+  context:
+    - planning_task
+
+execution_task:
+  description: >
+    The code from the coding task will be executed programmatically by the system.
+    Document what execution should verify and expected output files.
+    Code preview: {code_preview}
+  expected_output: >
+    Execution checklist and expected artifacts list.
+  agent: executor_agent
+  context:
+    - coding_task
+
+evaluation_task:
+  description: >
+    Evaluate the analysis against the plan.
+    Query: {query}
+    Execution stdout: {stdout}
+    Execution stderr: {stderr}
+    Execution status: {execution_status}
+    Output files: {output_files}
+  expected_output: >
+    Evaluation with score 0-1, pass/fail, gaps, and recommendations.
+  agent: evaluator_agent
+  context:
+    - planning_task
+    - coding_task
+
+feedback_task:
+  description: >
+    Generate structured feedback for revision.
+    Evaluation: {evaluation_summary}
+    Execution logs included above.
+  expected_output: >
+    Structured feedback with categories, severity, and revision recommendations.
+  agent: feedback_agent
+  context:
+    - evaluation_task
+
+reporting_task:
+  description: >
+    Write the final markdown research report.
+    Query: {query}
+    Plan summary: {plan}
+    Execution status: {execution_status}
+    Key stdout: {stdout}
+    Feedback applied: {feedback_context}
+  expected_output: >
+    Complete markdown report with executive summary, methodology, findings, limitations.
+  agent: report_agent
+  context:
+    - planning_task
+    - evaluation_task
+    - feedback_task
