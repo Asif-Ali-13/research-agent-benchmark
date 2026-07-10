@@ -1,0 +1,9 @@
+component,baseline,feedback_loop,delta,improved
+Data Understanding,8.0,7.0,-1.0,False
+Preprocessing,7.5,5.5,-2.0,False
+Feature Engineering,5.0,7.0,2.0,True
+Model Selection,6.5,9.0,2.5,True
+Evaluation Strategy,4.0,6.0,2.0,True
+Statistical Validity,7.0,6.0,-1.0,False
+Business Alignment,3.5,4.5,1.0,True
+Explainability,6.0,6.0,0.0,False

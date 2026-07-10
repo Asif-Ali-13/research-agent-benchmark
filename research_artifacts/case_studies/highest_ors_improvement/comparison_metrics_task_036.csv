@@ -1,0 +1,9 @@
+metric,baseline,feedback_loop,delta,improved
+TCR,0.0,1.0,1.0,True
+ESR,0.0,1.0,1.0,True
+RR,0.0,0.0,0.0,False
+FIS,0.0,0.0,0.0,False
+DA,0.6083,0.6333,0.025,True
+DQS,59.25,66.25,7.0,True
+BAS,35.0,45.0,10.0,True
+ORS,29.27,62.67,33.4,True
