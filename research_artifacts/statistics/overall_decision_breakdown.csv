@@ -1,0 +1,9 @@
+Component,Baseline,Feedback,Delta,ImprovedCount
+Data Understanding,7.7500,7.7500,0.0000,3
+Preprocessing,6.4000,6.3750,-0.0250,7
+Feature Engineering,6.1000,6.7000,0.6000,6
+Model Selection,6.6000,6.9750,0.3750,4
+Evaluation Strategy,5.8500,6.1500,0.3000,3
+Statistical Validity,6.4000,6.6500,0.2500,4
+Business Alignment,5.7750,5.8750,0.1000,3
+Explainability,6.7500,7.1250,0.3750,5
